@@ -113,7 +113,7 @@ export function Markdown({ text }: { text: string }) {
   );
 }
 
-export function Field({ label, children, error }: { label: string; children: ReactNode; error?: string }) {
+export function Field({ label, children, error }: { label: string; children: ReactNode; error?: string | undefined }) {
   return (
     <label className="block space-y-1.5">
       <span className="text-sm font-medium">{label}</span>

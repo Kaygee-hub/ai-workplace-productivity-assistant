@@ -17,12 +17,12 @@ const empty = { recipient: "", subject: "", purpose: "", points: "", tone: "Form
 
 function EmailPage() {
   const [f, setF] = useState(empty);
-  const [errs, setErrs] = useState<Record<string, string>>({});
+  const [errs, setErrs] = useState<{ recipient?: string; purpose?: string }>({});
   const ai = useAITool("email");
   const set = (k: keyof typeof empty) => (v: string) => setF((p) => ({ ...p, [k]: v }));
 
   const submit = async () => {
-    const e: Record<string, string> = {};
+    const e: { recipient?: string; purpose?: string } = {};
     if (!f.recipient.trim()) e.recipient = "Recipient is required";
     if (!f.purpose.trim()) e.purpose = "Describe the purpose of the email";
     setErrs(e);
