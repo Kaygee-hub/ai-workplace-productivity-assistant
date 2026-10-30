@@ -23,7 +23,7 @@ const schema = z.object({
 });
 
 export const runAI = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => schema.parse(d))
+  .validator((d: unknown) => schema.parse(d))
   .handler(async ({ data }) => {
     const { generateResponse, GatewayError } = await import("@lovable.dev/ai-gateway");
     try {
